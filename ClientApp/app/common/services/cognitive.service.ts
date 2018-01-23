@@ -8,8 +8,8 @@ import { BingSearchResponse } from '../models/bingSearchResponse';
 import { ComputerVisionRequest, ComputerVisionResponse } from '../models/computerVisionResponse';
 @Injectable()
 export class CognitiveService {
-    bingSearchAPIKey = '';
-    computerVisionAPIKey = '';
+    bingSearchAPIKey = ''; //Add key
+    computerVisionAPIKey = ''; //Add key
     searchUrl = '';
     imageJson = '';
     constructor(private http: AzureHttpClient) { }
