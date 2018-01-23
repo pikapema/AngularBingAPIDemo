@@ -16,6 +16,10 @@
             <div>
                 <span class="tag label" [ngClass]="{'label-default': tag.confidence >= .75, 'label-warning': tag.confidence >= .5 && tag.confidence < .75, 'label-danger': tag.confidence < .5}" *ngFor="let tag of currentAnalytics?.tags">{{tag.name}}</span>
             </div>
+            <div>
+                <h4><b>Ages:</b></h4>
+                <span class="tag label" [ngClass]="{'label-default': face.age}" *ngFor="let face of currentAnalytics?.faces">{{face.age}}</span>
+            </div>
         </div>
         <div *ngIf="isAnalyzing">
             <h4>Analyzing Photo...</h4>

@@ -12,4 +12,8 @@ export interface ComputerVisionResponse {
         confidence: number;
         name: string;
     }>;
+    faces: Array<{
+        age: number;
+        gender: string;
+    }>;
 }

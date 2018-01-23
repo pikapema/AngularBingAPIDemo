@@ -8,8 +8,8 @@ import { BingSearchResponse } from '../models/bingSearchResponse';
 import { ComputerVisionRequest, ComputerVisionResponse } from '../models/computerVisionResponse';
 @Injectable()
 export class CognitiveService {
-    bingSearchAPIKey = ''; //Add key
-    computerVisionAPIKey = ''; //Add key
+    bingSearchAPIKey = '598f2cdace7c4b2ab92bff1ed734c22d'; //Add key
+    computerVisionAPIKey = '7e56861f4487402593fce01477de3836'; //Add key
     searchUrl = '';
     imageJson = '';
     constructor(private http: AzureHttpClient) { }
@@ -23,7 +23,7 @@ export class CognitiveService {
 
     analyzeImage(request: ComputerVisionRequest): Observable<ComputerVisionResponse> {
         this.imageJson = '{"url":"' + request.url + '"}'
-        return this.http.post('https://westeurope.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description,Tags', this.computerVisionAPIKey, this.imageJson)
+        return this.http.post('https://westeurope.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description,Tags,Faces', this.computerVisionAPIKey, this.imageJson)
             .map((res)  => res.json() as ComputerVisionResponse)
             .catch(this.handleError);
     }
