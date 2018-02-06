@@ -17,7 +17,14 @@
                 <span class="tag label" [ngClass]="{'label-default': tag.confidence >= .75, 'label-warning': tag.confidence >= .5 && tag.confidence < .75, 'label-danger': tag.confidence < .5}" *ngFor="let tag of currentAnalytics?.tags">{{tag.name}}</span>
             </div>
             <div>
-                <h4><b>Ages:</b></h4>
+                    <h4><b>We found {{currentAnalytics?.faces.length}} persons in the image to analyze: </b></h4>
+                </div>
+            <div>
+                    <h6><b>Gender:</b></h6>
+                    <span class="tag label" [ngClass]="{'label-default': face.gender}" *ngFor="let face of currentAnalytics?.faces">{{face.gender}}</span>
+                </div>
+            <div>
+                <h6><b>Ages:</b></h6>
                 <span class="tag label" [ngClass]="{'label-default': face.age}" *ngFor="let face of currentAnalytics?.faces">{{face.age}}</span>
             </div>
         </div>
