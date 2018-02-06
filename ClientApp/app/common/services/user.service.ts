@@ -9,11 +9,9 @@ import { Console } from '@angular/core/src/console';
 
 @Injectable()
 export class UserService {
-    private _originUrl: string;
     private aadUser: AADUser;
 
     constructor(private http: Http) {
-        this._originUrl = "azuretoolkitexample.azurewebsites.net";
     }
 
     public getUser(): Observable<User> {
@@ -32,6 +30,9 @@ export class UserService {
                                 break;
                             case "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname":
                                 user.lastName = claim.val;
+                                break;
+                            case "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/jobtitle":
+                                user.jobtitle = claim.val;
                                 break;
                         }
                     });
