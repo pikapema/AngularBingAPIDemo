@@ -14,11 +14,10 @@ export class UserService {
 
     constructor(private http: Http) {
         this._originUrl = "azuretoolkitexample.azurewebsites.net";
-        console.info("origin url = " + this._originUrl);
     }
 
     public getUser(): Observable<User> {
-        return this.http.get('${this.originUrl}/.auth/me')
+        return this.http.get('${this._originUrl}/.auth/me')
             .map(response => {
                 try {
                     console.debug("trying to get user...");
