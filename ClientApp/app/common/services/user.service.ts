@@ -17,12 +17,10 @@ export class UserService {
     }
 
     public getUser(): Observable<User> {
-        return this.http.get('${this._originUrl}/.auth/me')
+        return this.http.get('/.auth/me')
             .map(response => {
                 try {
-                    console.debug("trying to get user...");
                     this.aadUser = response.json()[0] as AADUser;
-                    console.debug("success! User claims = " + this.aadUser.user_claims);
    
                     let user = new User();
                     user.userId = this.aadUser.user_id;
