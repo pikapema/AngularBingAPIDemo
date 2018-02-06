@@ -9,12 +9,12 @@ import { Console } from '@angular/core/src/console';
 
 @Injectable()
 export class UserService {
-    private originUrl: string;
+    private _originUrl: string;
     private aadUser: AADUser;
 
-    constructor(private http: Http, @Inject('ORIGIN_URL')originUrl: string) {
-        this.originUrl = originUrl;
-        console.info("origin url = " + originUrl);
+    constructor(private http: Http) {
+        this._originUrl = "azuretoolkitexample.azurewebsites.net";
+        console.info("origin url = " + this._originUrl);
     }
 
     public getUser(): Observable<User> {
