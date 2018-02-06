@@ -27,6 +27,8 @@
                 <h6><b>Ages:</b></h6>
                 <span class="tag label" [ngClass]="{'label-default': face.age}" *ngFor="let face of currentAnalytics?.faces">{{face.age}}</span>
             </div>
+            <button *ngIf="!currentItemSaved" (click)="saveImage()">Save Image</button>
+            <span *ngIf="currentItemSaved">Image Saved!</span>
         </div>
         <div *ngIf="isAnalyzing">
             <h4>Analyzing Photo...</h4>
