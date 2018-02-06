@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import { User, AADUser } from '../models/user';
+import { Console } from '@angular/core/src/console';
 
 @Injectable()
 export class UserService {
@@ -13,13 +14,16 @@ export class UserService {
 
     constructor(private http: Http, @Inject('ORIGIN_URL')originUrl: string) {
         this.originUrl = originUrl;
+        console.info("origin url = " + originUrl);
     }
 
     public getUser(): Observable<User> {
         return this.http.get('${this.originUrl}/.auth/me')
             .map(response => {
                 try {
+                    console.debug("trying to get user...");
                     this.aadUser = response.json()[0] as AADUser;
+                    console.debug("success! User claims = " + this.aadUser.user_claims);
    
                     let user = new User();
                     user.userId = this.aadUser.user_id;
