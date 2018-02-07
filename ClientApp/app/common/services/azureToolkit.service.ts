@@ -1,6 +1,7 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { ImagePostRequest } from '../models/imagePostRequest';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -10,7 +11,7 @@ export class AzureToolkitService {
     constructor(private http: Http) {
     }
 
-    public saveImage(imagePostRequest: { url: string, id: string, encodingFormat: string}): Observable<boolean> {
+    public saveImage(imagePostRequest: ImagePostRequest): Observable<boolean> {
         return this.http.post('/api/images', imagePostRequest)
             .map(response => {
                 return response.ok;

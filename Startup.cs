@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplicationBasic.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AzureToolkitLab
 {
@@ -23,6 +25,8 @@ namespace AzureToolkitLab
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            var connection = @"Server=tcp:azuretoolkit-kapeltol.database.windows.net,1433;Initial Catalog=azuretoolkit;Persist Security Info=False;User ID=pikapema;Password=Di97kapa;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddDbContext<AzureToolkitContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
