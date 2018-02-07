@@ -57,7 +57,10 @@ import { ImagePostRequest } from '../../common/models/imagePostRequest';
                 encodingFormat: this.currentItem.encodingFormat,
                 id: this.currentItem.imageId,
                 description: this.currentAnalytics.description.captions[0].text,
-                tags: this.currentAnalytics.tags.map(tag => tag.name)
+                tags: this.currentAnalytics.tags.map(tag => tag.name),
+                age: this.currentAnalytics.faces.map(face => face.age), 
+                gender: this.currentAnalytics.faces.map(face => face.gender),
+                noofpeople: this.currentAnalytics.faces.length,                               
             }
             this.azureToolkitService.saveImage(transferObject).subscribe(saveSuccessful => {
                 this.currentItemSaved = saveSuccessful;

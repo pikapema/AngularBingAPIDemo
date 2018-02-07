@@ -44,12 +44,26 @@ using System.Threading.Tasks;
              savedImage.UserId = request.UserId;
              savedImage.Description = request.Description;
              savedImage.StorageUrl = blockBlob.Uri.ToString();
-             savedImage.Tags = new List<SavedImageTag>();
+             savedImage.Tags = new List<SavedImageTag>();        
 
              foreach(var tag in request.Tags)
              {
                  savedImage.Tags.Add(new SavedImageTag() {Tag = tag});
              }
+
+             savedImage.NoOfPeople = request.NoOfPeople;
+             savedImage.Age = new List<int>();
+             foreach(var age in request.Age)
+             {
+                 savedImage.Age.Add(age);
+             }
+
+             savedImage.Gender = new List<string>();
+             foreach(var gender in request.Gender)
+             {
+                 savedImage.Gender.Add(gender);
+             }
+
 
              _context.Add(savedImage);
              _context.SaveChanges();
@@ -61,7 +75,10 @@ using System.Threading.Tasks;
      {
          public string UserId { get; set; }
          public string Description { get; set; }
+         public int NoOfPeople { get; set; }
          public string[] Tags { get; set; }
+         public string[] Gender { get; set; }
+         public int[] Age { get; set; }
          public string URL { get; set; }
          public string Id { get; set; }
          public string EncodingFormat { get; set; }
