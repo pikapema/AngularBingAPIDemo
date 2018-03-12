@@ -25,7 +25,7 @@ namespace AzureToolkitLab
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            var connection = @"Server=tcp:azuretoolkit-kapeltol.database.windows.net,1433;Initial Catalog=azuretoolkit;Persist Security Info=False;User ID=pikapema;Password=Di97kapa;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            var connection = @"Server=tcp:azuretoolkit-kapeltol.database.windows.net,1433;Initial Catalog=azuretoolkit;Persist Security Info=False;User ID=[user];Password=[pwd];MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddDbContext<AzureToolkitContext>(options => options.UseSqlServer(connection));
         }
 
