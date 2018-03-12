@@ -5,7 +5,4 @@ export interface ImagePostRequest {
     url: string;
     id: string;
     encodingFormat: string;
-    noofpeople: number;
-    gender: string[];
-    age: number[];
 }

@@ -51,25 +51,18 @@ using System.Threading.Tasks;
                  savedImage.Tags.Add(new SavedImageTag() {Tag = tag});
              }
 
-             savedImage.NoOfPeople = request.NoOfPeople;
-             savedImage.Age = new List<int>();
-             foreach(var age in request.Age)
-             {
-                 savedImage.Age.Add(age);
-             }
-
-             savedImage.Gender = new List<string>();
-             foreach(var gender in request.Gender)
-             {
-                 savedImage.Gender.Add(gender);
-             }
-
-
              _context.Add(savedImage);
              _context.SaveChanges();
 
              return Ok();
          }
+
+         [HttpGet("{userId}")]
+        public IActionResult GetImages(string userID)
+        {
+            var images = _context.SavedImages.Where(image => image.UserId == userID);
+            return Ok(images);
+        }
      }
      public class ImagePostRequest
      {
